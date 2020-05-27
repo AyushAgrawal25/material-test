@@ -1,24 +1,43 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Header from './components/signUpForm/Header';
+import ModalTest from './components/signUpForm/modalTest'
 
 function App() {
+  
+  const initialStateData={
+    firstName:'',
+    lastName:'',
+    email:'',
+    password:'',
+    phoneNumber:'',
+  }
+
+  const loadingCase={
+    ...initialStateData,
+    loading:true
+  }
+
+  const errorCase={
+    ...initialStateData,
+    error:{
+      nullCase:"This field is required",
+    }
+  }
+
+  const errorSpecialCase={
+    ...initialStateData,
+    error:{
+      nullCase:"This field is required",
+      specialCase:"This email is already registered"
+    }
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header></Header>
+      <ModalTest stateData={loadingCase}></ModalTest>
+                
     </div>
   );
 }
